@@ -1,12 +1,3 @@
 {
-  "changes": [
-    {
-      "type": "added",
-      "message": "Cleaner"
-    },
-    {
-      "type": "added",
-      "message": "Loader and acll_loader script. (Only JS by now)"
-    }
-  ]
+  "changes": []
 }
