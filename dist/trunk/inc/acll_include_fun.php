@@ -8,7 +8,6 @@ if ( ! defined( 'WPINC' ) ) {
 function acll_include_fun() {
 
 	$paths = array(
-		'inc/fun/acll_is_rest.php',
 	);
 
 	if ( count( $paths ) > 0 ) {

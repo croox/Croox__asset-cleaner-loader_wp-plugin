@@ -30,6 +30,12 @@ Upload and install this Theme the same way you'd install any other Theme.
 
 ## Changelog ##
 
+## 0.0.2 - 2021-02-07
+Fix
+
+### Removed
+- Function acll_is_rest
+
 ## 0.0.1 - 2021-02-07
 Cleans assets and loads JS ... no CSS loading by now
 
