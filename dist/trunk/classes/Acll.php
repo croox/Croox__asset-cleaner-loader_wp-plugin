@@ -7,14 +7,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-use croox\wde;
+use croox\wde\Plugin;
 
-class Acll extends wde\Plugin {
+class Acll extends Plugin {
 
 	public function hooks(){
 		parent::hooks();
 
-		if ( ! is_admin() && ! acll_is_rest() ) {
+		if ( ! is_admin() ) {
 			Cleaner::get_instance();
 			Loader::get_instance();
 		}
