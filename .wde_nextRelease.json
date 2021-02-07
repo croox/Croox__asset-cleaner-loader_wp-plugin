@@ -1,3 +1,8 @@
 {
-  "changes": []
+  "changes": [
+    {
+      "type": "removed",
+      "message": "Function acll_is_rest"
+    }
+  ]
 }
