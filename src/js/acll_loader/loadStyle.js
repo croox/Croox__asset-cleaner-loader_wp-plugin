@@ -43,7 +43,7 @@ const loadStyle = ( src, attrs, parentNode ) => {
         }
 
         const node = parentNode || document.head || document.getElementsByTagName( 'head' )[0];
-        node.appendChild( ele );
+        node.prepend( ele );    // prepend instead of appendChild. Position it before theme styles
     } );
 }
 
