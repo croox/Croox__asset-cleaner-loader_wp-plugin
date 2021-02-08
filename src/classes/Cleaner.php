@@ -15,13 +15,13 @@ class Cleaner {
 
     /**
      * Array of script handles.
-     * Use $this->get_dequeue_handles( 'scripts' )
+     * Use $this->get_dequeue_handles( 'script' )
      */
     protected $dequeue_script_handles = null;
 
     /**
      * Array of style handles.
-     * Use $this->get_dequeue_handles( 'scripts' )
+     * Use $this->get_dequeue_handles( 'style' )
      */
     protected $dequeue_style_handles = null;
 
@@ -36,10 +36,8 @@ class Cleaner {
         // Dequeue scripts. Twice, in header and in footer.
 		add_action( 'wp_print_scripts', array( $this, 'dequeue_scripts' ), 999 );
         add_action( 'wp_print_footer_scripts', array( $this, 'dequeue_scripts' ), 3 );
-
-        // Dequeue styles .... ??? should be twice ... ??? should be possible to load them via js
+        // Dequeue styles
         add_action( 'wp_print_styles', array( $this, 'dequeue_styles' ), 999 );
-
         // Remove some dependencies from all woo block scripts
 		add_filter( 'woocommerce_blocks_register_script_dependencies', array( $this, 'woo_blocks_dependencies' ), 999, 1 );
 	}
@@ -50,15 +48,15 @@ class Cleaner {
      * @param   string   $type  Type of asset. 'scripts'|'styles'
      * @return  array
      */
-    public function get_dequeue_handles( $type = 'scripts' ) {
+    public function get_dequeue_handles( $type = 'script' ) {
         switch( $type ) {
-            case 'scripts':
+            case 'script':
                 if ( null === $this->dequeue_script_handles ) {
                     $this->dequeue_script_handles = apply_filters( 'acll_cleaner_scripts', array() );
                 }
                 return $this->dequeue_script_handles;
                 break;
-            case 'styles':
+            case 'style':
                 if ( null === $this->dequeue_style_handles ) {
                     $this->dequeue_style_handles = apply_filters( 'acll_cleaner_styles', array() );
                 }
@@ -71,7 +69,7 @@ class Cleaner {
      * Dequeue certain scripts
      */
     public function dequeue_scripts() {
-        foreach ( $this->get_dequeue_handles( 'scripts' ) as $handle ) {
+        foreach ( $this->get_dequeue_handles( 'script' ) as $handle ) {
             wp_dequeue_script( $handle );
         }
     }
@@ -80,7 +78,7 @@ class Cleaner {
      * Dequeue certain styles
      */
     public function dequeue_styles() {
-        foreach ( $this->get_dequeue_handles( 'styles' ) as $handle ) {
+        foreach ( $this->get_dequeue_handles( 'style' ) as $handle ) {
             wp_dequeue_style( $handle );
         }
     }
@@ -103,8 +101,5 @@ class Cleaner {
         }
         return $dependencies;
    }
-
-
-
 
 }

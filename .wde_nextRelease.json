@@ -1,3 +1,24 @@
 {
-  "changes": []
+  "changes": [
+    {
+      "type": "added",
+      "message": "Support to load CSS via JS"
+    },
+    {
+      "type": "added",
+      "message": "PHP Api filter acll_loader_style_handles"
+    },
+    {
+      "type": "added",
+      "message": "Api function acll_loader.loadAssetsByType"
+    },
+    {
+      "type": "added",
+      "message": "Api function acll_loader.loadAssets"
+    },
+    {
+      "type": "removed",
+      "message": "Api function acll_loader.loadScripts, use acll_loader.loadAssetsByType instead"
+    }
+  ]
 }
