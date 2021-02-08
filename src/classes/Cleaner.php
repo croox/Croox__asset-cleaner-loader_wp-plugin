@@ -36,8 +36,10 @@ class Cleaner {
         // Dequeue scripts. Twice, in header and in footer.
 		add_action( 'wp_print_scripts', array( $this, 'dequeue_scripts' ), 999 );
         add_action( 'wp_print_footer_scripts', array( $this, 'dequeue_scripts' ), 3 );
+        add_filter( 'print_scripts_array', array( $this, 'remove_from_print_scripts_array' ), 10, 1 );
         // Dequeue styles
         add_action( 'wp_print_styles', array( $this, 'dequeue_styles' ), 999 );
+        add_filter( 'print_styles_array', array( $this, 'remove_from_print_styles_array' ), 10, 1 );
         // Remove some dependencies from all woo block scripts
 		add_filter( 'woocommerce_blocks_register_script_dependencies', array( $this, 'woo_blocks_dependencies' ), 999, 1 );
 	}
@@ -81,6 +83,26 @@ class Cleaner {
         foreach ( $this->get_dequeue_handles( 'style' ) as $handle ) {
             wp_dequeue_style( $handle );
         }
+    }
+
+    /**
+     * Remove scripts from the array of enqueued styles before processing for output.
+     */
+    public function remove_from_print_scripts_array( $handles ) {
+        $dequeue_handles = $this->get_dequeue_handles( 'script' );
+        return array_filter( $handles, function( $handle ) use ( $dequeue_handles ) {
+            return ! in_array( $handle, $dequeue_handles );
+        } );
+    }
+
+    /**
+     * Remove styles from the array of enqueued styles before processing for output.
+     */
+    public function remove_from_print_styles_array( $handles ) {
+        $dequeue_handles = $this->get_dequeue_handles( 'style' );
+        return array_filter( $handles, function( $handle ) use ( $dequeue_handles ) {
+            return ! in_array( $handle, $dequeue_handles );
+        } );
     }
 
     /**
