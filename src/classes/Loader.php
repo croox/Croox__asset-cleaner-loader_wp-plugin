@@ -43,16 +43,38 @@ class Loader {
 	}
 
 	protected function __construct() {
-        // Register script and enqueue it in footer.
-        add_action( 'wp_enqueue_scripts', array( $this, 'register_script' ), 10 );
-        // Collect styles to use as kind of localize data.
-        add_action( 'wp_print_styles', array( $this, 'collect_styles_for_loc_data' ), 1 );
-        // Collect scripts to use as kind of localize data. Collect twice, in header and in footer.
-        add_action( 'wp_print_scripts', array( $this, 'collect_scripts_for_loc_data_header' ), 1 );
-        add_action( 'wp_print_footer_scripts', array( $this, 'collect_scripts_for_loc_data_footer' ), 1 );
-        // Add collected scripts as kind of localized data. Inline script actually.
-        add_action( 'wp_print_footer_scripts', array( $this, 'add_loc_data' ), 2 );
+        add_action( 'wp_loaded', array( $this, 'hooks' ), 20 );
 	}
+
+    /**
+     * Setup hooks.
+     */
+	public function hooks() {
+        // Allow priorities to be filtered.
+        $priorities = apply_filters( 'acll_loader_hook_priorities', array(
+            'register_script'                       => 10,
+            'collect_styles_for_loc_data'           => 2,
+            'collect_scripts_for_loc_data_header'   => 2,
+            'collect_scripts_for_loc_data_footer'   => 2,
+            'add_loc_data'                          => 5,
+        ) );
+
+        // Register script and enqueue it in footer.
+        add_action( 'wp_enqueue_scripts', array( $this, 'register_script' ), Arr::get( $priorities, 'register_script' ) );
+
+        // Collect styles to use as kind of localize data.
+        add_action( 'wp_print_styles', array( $this, 'collect_styles_for_loc_data' ), Arr::get( $priorities, 'collect_styles_for_loc_data' ) );
+
+        // Collect scripts to use as kind of localize data.
+        // Do it twice, in header and in footer.
+        add_action( 'wp_print_scripts', array( $this, 'collect_scripts_for_loc_data_header' ), Arr::get( $priorities, 'collect_scripts_for_loc_data_header' ) );
+        // Has do be done before Cleaner will dequeue the scripts. See Cleaner::hooks
+        // And after woocommerceBlocks added the inline script data wcSettings. See Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry::enqueue_asset_data in woo-gutenberg-products-block/src/Assets/AssetDataRegistry.php
+        add_action( 'wp_print_footer_scripts', array( $this, 'collect_scripts_for_loc_data_footer' ), Arr::get( $priorities, 'collect_scripts_for_loc_data_footer' ) );
+
+        // Add collected scripts as kind of localized data. Inline script actually.
+        add_action( 'wp_print_footer_scripts', array( $this, 'add_loc_data' ), Arr::get( $priorities, 'add_loc_data' ) );
+    }
 
     /**
      * Register script in footer.
