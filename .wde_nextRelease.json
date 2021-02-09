@@ -1,3 +1,12 @@
 {
-  "changes": []
+  "changes": [
+    {
+      "type": "changed",
+      "message": "Hook priorities. To enable woocommerce-blocks to add inline script data wcSettings"
+    },
+    {
+      "type": "added",
+      "message": "Filters `acll_loader_hook_priorities`|`acll_cleaner_hook_priorities` to allow hook priorities to be filtered"
+    }
+  ]
 }

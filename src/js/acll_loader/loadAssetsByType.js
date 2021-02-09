@@ -90,7 +90,6 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
                                     tagAfter.id = handle + '-inline-css';
                                     tagAfter.type = acll_loader[type+'s'][handle].attrs.type ? acll_loader[type+'s'][handle].attrs.type : 'text/css';
                                     document.body.appendChild( tagAfter );
-
                                 }
                                 tagAfter.innerHTML = [...acll_loader[type+'s'][handle].after].filter( a => !! a ).join( '\n' );
                                 document.body.appendChild( tagAfter );
