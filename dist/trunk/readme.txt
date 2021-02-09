@@ -30,6 +30,16 @@ Upload and install this Theme the same way you'd install any other Theme.
 
 == Changelog ==
 
+## 0.2.0 - 2021-02-09
+Change hook priorities to enable woocommerce-blocks to add inline script data wcSettings
+
+### Added
+- Filters `acll_loader_hook_priorities`|`acll_cleaner_hook_priorities` to allow hook priorities to be filtered
+
+### Changed
+- Hook priorities. To enable woocommerce-blocks to add inline script data wcSettings
+- Only load assets when they are not already loaded on start
+
 ## 0.1.0 - 2021-02-08
 Support to load CSS via JS
 
