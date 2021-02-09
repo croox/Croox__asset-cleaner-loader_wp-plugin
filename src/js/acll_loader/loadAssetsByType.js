@@ -27,6 +27,34 @@ const setTranslations = ( domain, translations ) => {
 };
 
 /**
+ * Get a list of assets byb type already loaded on start
+ *
+ * @param   string  type    Type of asset: script|style
+ * @return  array           Array of asset sources
+ */
+let loadedOnStart = {};
+const getLoadedOnStart = type => {
+    if ( ! loadedOnStart[type+'s'] ) {
+        switch( type ) {
+            case 'script':
+                loadedOnStart[type+'s'] = Array.from( document.getElementsByTagName( 'script' ) )
+                    .map( node => node.src )
+                    .filter( src => !! src )
+                    .map( src => src.replace( /\?ver=.*$/, '' ) );
+                break;
+            case 'style':
+                loadedOnStart[type+'s'] = Array.from( document.getElementsByTagName( 'link' ) )
+                    .map( node => node.href )
+                    .filter( src => !! src )
+                    .map( src => src.replace( /\?ver=.*$/, '' ) )
+                    .filter( src => src.endsWith( '.css' ) );
+                break;
+        }
+    }
+    return loadedOnStart[type+'s'];
+}
+
+/**
  * loadAssetsByType
  *
  * @param   string  type    Type of asset: script|style
@@ -54,6 +82,9 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
                     return resolve( result );
                 }
                 if ( availableHandles.includes( handle ) && acll_loader[type+'s'][handle] ) {
+                    if ( getLoadedOnStart( type ).includes( acll_loader[type+'s'][handle].src ) ) {
+                        return resolve( result );
+                    }
                     if ( 'script' === type ) {
                         // Add localized data as global
                         if ( acll_loader[type+'s'][handle].loc_data ) {
