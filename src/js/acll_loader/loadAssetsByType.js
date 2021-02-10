@@ -88,10 +88,11 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
                     if ( 'script' === type ) {
                         // Add localized data as global
                         if ( acll_loader[type+'s'][handle].loc_data ) {
-                            const matches = acll_loader[type+'s'][handle].loc_data.match( /^var\s(\S+)\s=\s([\s\S]+)(?=;$)/ );
-                            if ( 3 === matches.length ) {
-                                window[matches[1]] = parseSerialized( matches[2] );
-                            }
+                            [...( acll_loader[type+'s'][handle].loc_data + "\n" ).matchAll( /var\s(\S+)\s=\s([\s\S]+?)(?=;\n)/g )].map( matches => {
+                                if ( 3 === matches.length ) {
+                                    window[matches[1]] = parseSerialized( matches[2] );
+                                }
+                            } );
                         }
                         // Set translations
                         if ( acll_loader[type+'s'][handle].translations && acll_loader[type+'s'][handle].translations.length ) {
