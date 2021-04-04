@@ -3,6 +3,10 @@
     {
       "type": "fixed",
       "message": "Handle multible localize data"
+    },
+    {
+      "type": "fixed",
+      "message": "Don't mess up with equal handle names of scripts and styles. Allow same handle name for script and style."
     }
   ]
 }

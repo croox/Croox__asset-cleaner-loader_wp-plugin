@@ -27,7 +27,7 @@ const setTranslations = ( domain, translations ) => {
 };
 
 /**
- * Get a list of assets byb type already loaded on start
+ * Get a list of assets by type already loaded on start
  *
  * @param   string  type    Type of asset: script|style
  * @return  array           Array of asset sources
@@ -61,7 +61,10 @@ const getLoadedOnStart = type => {
  * @param   array  handles  Array of script handles
  * @return  Promise         Promise resolves when all scripts and their dependencies are loaded
  */
-const assetsRequested = {};
+const assetsRequested = {
+    style: {},
+    script: {},
+};
 const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
     let results = { errors: [], loaded: [] };
     if ( ! handles.length ) {
@@ -78,7 +81,7 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
 	return resolve( [...handles].reduce( ( accumulatorPromise, handle ) => {
         const loader = result => {
 			return new Promise( resolve => {
-                if ( assetsRequested[handle] ) {
+                if ( assetsRequested[type][handle] ) {
                     return resolve( result );
                 }
                 if ( availableHandles.includes( handle ) && acll_loader[type+'s'][handle] ) {
@@ -109,7 +112,7 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
                         }
                     }
                     // Load file
-                    assetsRequested[handle] = true;
+                    assetsRequested[type][handle] = true;
                     return loadAsset( acll_loader[type+'s'][handle].src, acll_loader[type+'s'][handle].attrs )
                         .then( node => {
                             // Set After
@@ -136,11 +139,11 @@ const loadAssetsByType = ( type, handles ) => new Promise( resolve => {
                             }, 1 )
                         } )
                         .catch( err => {
-                            assetsRequested[handle];
+                            assetsRequested[type][handle];
                             return resolve( {...result, errors: [...result.errors, err] } );
                         } );
                 } else {
-                    assetsRequested[handle];
+                    assetsRequested[type][handle];
                     return resolve( {...result, errors: [...result.errors, type + ' not found: ' + handle] } );
                 }
 			} );
