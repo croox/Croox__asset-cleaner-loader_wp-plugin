@@ -50,7 +50,11 @@ class Loader {
      * Setup hooks.
      */
 	public function hooks() {
-        // Allow priorities to be filtered.
+        /**
+         * Allow hook priorities to be filtered.
+         *
+         * @param array     $priorities     Associative array of hook priorities.
+         */
         $priorities = apply_filters( 'acll_loader_hook_priorities', array(
             'register_script'                       => 10,
             'collect_styles_for_loc_data'           => 2,
@@ -96,6 +100,11 @@ class Loader {
         $this->styles = array_merge(
             $this->styles,
             $this->get_styles_data(
+                /**
+                 * Modifies the array of style handles that will available for frontend js.
+                 *
+                 * @param array     $style_handles     Style handles for frontend js.
+                 */
                 apply_filters( 'acll_loader_style_handles', array() )
             )
         );
@@ -107,6 +116,11 @@ class Loader {
         $this->scripts = array_merge(
             $this->scripts,
             $this->get_scripts_data(
+                /**
+                 * Modifies the array of script handles, collected in header, that will available for frontend js..
+                 *
+                 * @param array     $script_handles     Header script handles for frontend js.
+                 */
                 apply_filters( 'acll_loader_script_handles_header', array() )
             )
         );
@@ -119,6 +133,11 @@ class Loader {
         $this->scripts = array_merge(
             $this->scripts,
             $this->get_scripts_data(
+                /**
+                 * Modifies the array of script handles, collected in footer, that will available for frontend js..
+                 *
+                 * @param array     $script_handles     Footer script handles for frontend js.
+                 */
                 apply_filters( 'acll_loader_script_handles_footer', array() )
             )
         );

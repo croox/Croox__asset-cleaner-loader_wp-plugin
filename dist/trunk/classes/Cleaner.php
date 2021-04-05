@@ -40,7 +40,11 @@ class Cleaner {
      * Setup hooks.
      */
 	public function hooks() {
-        // Allow priorities to be filtered.
+        /**
+         * Allow hook priorities to be filtered.
+         *
+         * @param array     $priorities     Associative array of hook priorities.
+         */
         $priorities = apply_filters( 'acll_cleaner_hook_priorities', array(
             'dequeue_scripts_header'            => 999,
             'dequeue_scripts_footer'            => 3,
@@ -78,12 +82,22 @@ class Cleaner {
         switch( $type ) {
             case 'script':
                 if ( null === $this->dequeue_script_handles ) {
+                    /**
+                     * Filters the array of script handles that will be dequeued.
+                     *
+                     * @param array     $dequeue_script_handles     Script handles to be dequeued.
+                     */
                     $this->dequeue_script_handles = apply_filters( 'acll_cleaner_scripts', array() );
                 }
                 return $this->dequeue_script_handles;
                 break;
             case 'style':
                 if ( null === $this->dequeue_style_handles ) {
+                    /**
+                     * Filters the array of style handles that will be dequeued.
+                     *
+                     * @param array     $dequeue_style_handles     Style handles to be dequeued.
+                     */
                     $this->dequeue_style_handles = apply_filters( 'acll_cleaner_styles', array() );
                 }
                 return $this->dequeue_style_handles;
@@ -144,7 +158,11 @@ class Cleaner {
         if ( is_admin() )
             return;
 
-        // Array of handles to be removed from all woo block script dependencies
+        /**
+         * Modify script handles to be removed from all woo block script dependencies
+         *
+         * @param array  $handles   Script handles to be removed from all woo block script dependencies
+         */
         $remove = apply_filters( 'acll_cleaner_woo_block_scripts_dependencies', array() );
 
         foreach( $remove as $handle ) {

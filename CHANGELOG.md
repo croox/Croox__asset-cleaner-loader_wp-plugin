@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.3.0 - 2021-04-05
+Updated readme.txt
+
+### Added
+- Create file `docs_hooks.md` on build and watch.
+
+### Changed
+- Updated readme.txt
+
+### Fixed
+- Handle multible localize data
+- Don't mess up with equal handle names of scripts and styles. Allow same handle name for script and style.
+
 ## 0.2.0 - 2021-02-09
 Change hook priorities to enable woocommerce-blocks to add inline script data wcSettings
 

@@ -3,7 +3,7 @@
 	Plugin Name: Croox Asset Cleaner Loader
 	Plugin URI: https://github.com/croox/Croox__asset-cleaner-loader_wp-plugin
 	Description: Stop some assets from being enqueued. Use JS to load them when needed
-	Version: 0.2.0
+	Version: 0.3.0
 	Author: croox
 	Author URI: https://github.com/croox
 	License: GNU General Public License v2 or later
