@@ -7,6 +7,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+use croox\wde\utils\Arr;
+
 /**
  * Base class for Blocks. Registers a Block and enqueues the assets.
  * Don't forget to add the required `js` and `scss` files!
@@ -34,6 +36,8 @@ abstract class Block {
 
 	protected $handles = array();
 
+	protected $hook_priorities = array();
+
 	public static function get_instance() {
 		$class = get_called_class();
 		if ( ! isset( self::$_instances[ $class ] ) ) {
@@ -46,6 +50,7 @@ abstract class Block {
 	function __construct() {
 		$this->initialize();
 		$this->setup_handles();
+		$this->set_hook_priorities();
 		$this->hooks();
 	}
 
@@ -84,18 +89,26 @@ abstract class Block {
 		);
 	}
 
+	protected function set_hook_priorities() {
+		$this->hook_priorities = array(
+			'style_admin'     => 10,
+			'script_admin'    => 10,
+			'style_frontend'  => 10,
+			'script_frontend' => 10,
+		);
+	}
+
 	/**
 	 * Initiate our hooks
 	 * @since  	0.7.0
 	 */
 	public function hooks() {
-
 		add_action( 'init', array( $this, 'register_block' ) );
 
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_style_admin' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_script_admin' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script_frontend' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style_frontend' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_style_admin' ), Arr::get( $this->hook_priorities, 'style_admin', 10 ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_script_admin' ), Arr::get( $this->hook_priorities, 'script_admin', 10 ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style_frontend' ), Arr::get( $this->hook_priorities, 'style_frontend', 10 ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script_frontend' ), Arr::get( $this->hook_priorities, 'script_frontend', 10 ) );
 	}
 
 	/**
@@ -112,17 +125,17 @@ abstract class Block {
 
 			$args = array();
 
-			if ( $this->get_handle( 'script_admin' ) )
-				$args = array_merge( $args, array( 'editor_script' => $this->get_handle( 'script_admin' ) ) );
+			if ( $handle = Arr::get( $this->handles, 'script_admin', false ) )
+				$args = array_merge( $args, array( 'editor_script' => $handle ) );
 
-			if ( $this->get_handle( 'style_admin' ) )
-				$args = array_merge( $args, array( 'editor_style' => $this->get_handle( 'style_admin' ) ) );
+			if ( $handle = Arr::get( $this->handles, 'style_admin', false ) )
+				$args = array_merge( $args, array( 'editor_style' => $handle ) );
 
-			if ( $this->get_handle( 'script_frontend' ) )
-				$args = array_merge( $args, array( 'script' => $this->get_handle( 'script_frontend' ) ) );
+			if ( $handle = Arr::get( $this->handles, 'script_frontend', false ) )
+				$args = array_merge( $args, array( 'script' => $handle ) );
 
-			if ( $this->get_handle( 'style_frontend' ) )
-				$args = array_merge( $args, array( 'style' => $this->get_handle( 'style_frontend' ) ) );
+			if ( $handle = Arr::get( $this->handles, 'style_frontend', false ) )
+				$args = array_merge( $args, array( 'style' => $handle ) );
 
 			if ( method_exists( $this, 'render' ) )
 				$args = array_merge( $args, array( 'render_callback' => array( $this, 'render' ) ) );
@@ -148,7 +161,7 @@ abstract class Block {
 	 * @since  	0.7.0
 	 */
 	public function enqueue_script_admin() {
-		$handle = $this->get_handle( 'script_admin' );
+		$handle = Arr::get( $this->handles, 'script_admin', false );
 		if ( ! $handle || ! method_exists( $this->project_class_name, 'register_script' ) )
 			return;
 
@@ -171,7 +184,7 @@ abstract class Block {
 	 * @since  	0.7.0
 	 */
 	public function enqueue_script_frontend() {
-		$handle = $this->get_handle( 'script_frontend' );
+		$handle = Arr::get( $this->handles, 'script_frontend', false );
 		if ( ! $handle || ! method_exists( $this->project_class_name, 'register_script' ) )
 			return;
 		$this->project_class_name::get_instance()->register_script( array(
@@ -191,7 +204,7 @@ abstract class Block {
 	 * @since  	0.7.0
 	 */
 	public function enqueue_style_admin() {
-		$handle = $this->get_handle( 'style_admin' );
+		$handle = Arr::get( $this->handles, 'style_admin', false );
 		if ( ! $handle || ! method_exists( $this->project_class_name, 'register_style' ) )
 			return;
 
@@ -211,7 +224,7 @@ abstract class Block {
 	 * @since  	0.7.0
 	 */
 	public function enqueue_style_frontend() {
-		$handle = $this->get_handle( 'style_frontend' );
+		$handle = Arr::get( $this->handles, 'style_frontend', false );
 		if ( ! $handle || ! method_exists( $this->project_class_name, 'register_style' ) )
 			return;
 
@@ -273,17 +286,6 @@ abstract class Block {
 	protected function get_style_deps_frontend( $deps = array() ) {
 		$prefix = $this->project_class_name::get_instance()->prefix;
 		return apply_filters( "{$prefix}_block_{$this->name}_style_deps_frontend", $deps );
-	}
-
-	/**
-	 * @since  	0.7.0
-	 */
-	protected function get_handle( $key ) {
-		$handles = $this->handles;
-		if ( array_key_exists( $key, $handles ) ) {
-			return $handles[$key];
-		}
-		return false;
 	}
 
 	/**
