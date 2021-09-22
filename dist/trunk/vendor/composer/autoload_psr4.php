@@ -8,6 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'croox\\wde\\' => array($vendorDir . '/croox/wp-dev-env-frame/src'),
     'acll\\' => array($baseDir . '/src/classes'),
-    'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );
