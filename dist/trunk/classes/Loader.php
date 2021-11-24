@@ -186,7 +186,13 @@ class Loader {
             }
             // Fill the array of styles with their dependencies,
             // but exclude dependencies that will be enqueued anyway.
-            // $styles = self::fill_deps( 'style', $styles, $this->get_all_queued_assets_and_deps_handles( 'style' ) );
+            /**
+             * Allow filtering the $excluded_handles to forcefully exclude some more dependencies.
+             *
+             * @param array     $exclude_handles     Style handles to be excluded from loader data.
+             */
+            $exclude_handles = apply_filters( 'acll_loader_style_exclude_handles', $this->get_all_queued_assets_and_deps_handles( 'style' ) );
+            $styles = self::fill_deps( 'style', $styles, $exclude_handles );
             // Change each style into the structure we need.
             foreach( $styles as $style ) {
                 $media = isset( $style->args ) ? esc_attr( $style->args ) : 'all';
@@ -254,7 +260,13 @@ class Loader {
         if ( ! empty( $scripts ) ) {
             // Fill the array of scripts with their dependencies,
             // but exclude dependencies that will be enqueued anyway.
-            $scripts = self::fill_deps( 'script', $scripts, $this->get_all_queued_assets_and_deps_handles( 'script' ) );
+            /**
+             * Allow filtering the $excluded_handles to forcefully exclude some more dependencies.
+             *
+             * @param array     $exclude_handles     Script handles to be excluded from loader data.
+             */
+            $exclude_handles = apply_filters( 'acll_loader_script_exclude_handles', $this->get_all_queued_assets_and_deps_handles( 'script' ) );
+            $scripts = self::fill_deps( 'script', $scripts, $exclude_handles );
             // Change each script into the structure we need.
             foreach( $scripts as $script ) {
                 // Get translations json

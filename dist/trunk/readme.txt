@@ -116,6 +116,12 @@ Upload and install this Theme the same way you'd install any other Theme.
 
 == Changelog ==
 
+## 0.4.0 - 2021-11-24
+Allow filtering the $excluded_handles for the loader
+
+### Added
+- Allow filtering the $excluded_handles. The handles that will not be added to the loader data. Eg to forcefully exclude some more dependencies.
+
 ## 0.3.1 - 2021-09-22
 Update dependencies
 
