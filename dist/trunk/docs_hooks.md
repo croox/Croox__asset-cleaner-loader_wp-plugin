@@ -85,3 +85,23 @@
   - `array` $script_handles
   
     Footer script handles for frontend js.
+
+- `filter` `acll_loader_style_exclude_handles`
+  
+  Allow filtering the $excluded_handles to forcefully exclude some more dependencies.
+  
+  #### Params:
+  
+  - `array` $exclude_handles
+  
+    Style handles to be excluded from loader data.
+
+- `filter` `acll_loader_script_exclude_handles`
+  
+  Allow filtering the $excluded_handles to forcefully exclude some more dependencies.
+  
+  #### Params:
+  
+  - `array` $exclude_handles
+  
+    Script handles to be excluded from loader data.
