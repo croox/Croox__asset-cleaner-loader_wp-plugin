@@ -1,8 +1,3 @@
 {
-  "changes": [
-    {
-      "type": "added",
-      "message": "Allow filtering the $excluded_handles. The handles that will not be added to the loader data. Eg to forcefully exclude some more dependencies."
-    }
-  ]
+  "changes": []
 }
