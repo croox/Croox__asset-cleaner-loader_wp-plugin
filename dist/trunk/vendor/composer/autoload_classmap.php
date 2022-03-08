@@ -108,6 +108,7 @@ return array(
     'croox\\wde\\Block' => $vendorDir . '/croox/wp-dev-env-frame/src/Block.php',
     'croox\\wde\\Childtheme' => $vendorDir . '/croox/wp-dev-env-frame/src/Childtheme.php',
     'croox\\wde\\Childtheme_Enfold' => $vendorDir . '/croox/wp-dev-env-frame/src/Childtheme_Enfold.php',
+    'croox\\wde\\Childtheme_Hello_Elementor' => $vendorDir . '/croox/wp-dev-env-frame/src/Childtheme_Hello_Elementor.php',
     'croox\\wde\\List_Table_Meta_Column' => $vendorDir . '/croox/wp-dev-env-frame/src/List_Table_Meta_Column.php',
     'croox\\wde\\Plugin' => $vendorDir . '/croox/wp-dev-env-frame/src/Plugin.php',
     'croox\\wde\\Project' => $vendorDir . '/croox/wp-dev-env-frame/src/Project.php',
