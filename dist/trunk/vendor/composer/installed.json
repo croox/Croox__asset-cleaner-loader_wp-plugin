@@ -148,20 +148,20 @@
         },
         {
             "name": "croox/wp-dev-env-frame",
-            "version": "0.12.0",
-            "version_normalized": "0.12.0.0",
+            "version": "0.14.0",
+            "version_normalized": "0.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/croox/wp-dev-env-frame.git",
-                "reference": "b3f81be0a0f0cd4b5c4f7c21330555945805ad68"
+                "reference": "b9404fa217ce09d341ee5503651cdebee894dfe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/croox/wp-dev-env-frame/zipball/b3f81be0a0f0cd4b5c4f7c21330555945805ad68",
-                "reference": "b3f81be0a0f0cd4b5c4f7c21330555945805ad68",
+                "url": "https://api.github.com/repos/croox/wp-dev-env-frame/zipball/b9404fa217ce09d341ee5503651cdebee894dfe0",
+                "reference": "b9404fa217ce09d341ee5503651cdebee894dfe0",
                 "shasum": ""
             },
-            "time": "2021-09-20T17:35:46+00:00",
+            "time": "2022-03-08T13:05:17+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -181,7 +181,7 @@
             "description": "some frame for wp-dev-env",
             "homepage": "https://github.com/croox/wp-dev-env-frame",
             "support": {
-                "source": "https://github.com/croox/wp-dev-env-frame/tree/0.12.0",
+                "source": "https://github.com/croox/wp-dev-env-frame/tree/0.14.0",
                 "issues": "https://github.com/croox/wp-dev-env-frame/issues"
             },
             "install-path": "../croox/wp-dev-env-frame"

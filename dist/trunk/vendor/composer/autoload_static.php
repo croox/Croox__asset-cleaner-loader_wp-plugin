@@ -139,6 +139,7 @@ class ComposerStaticInit5e9157f575f03360778416439e3522e9
         'croox\\wde\\Block' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Block.php',
         'croox\\wde\\Childtheme' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Childtheme.php',
         'croox\\wde\\Childtheme_Enfold' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Childtheme_Enfold.php',
+        'croox\\wde\\Childtheme_Hello_Elementor' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Childtheme_Hello_Elementor.php',
         'croox\\wde\\List_Table_Meta_Column' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/List_Table_Meta_Column.php',
         'croox\\wde\\Plugin' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Plugin.php',
         'croox\\wde\\Project' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/Project.php',
