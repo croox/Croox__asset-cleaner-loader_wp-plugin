@@ -3,7 +3,7 @@
   "prefer-stable": true,
   "require": {},
   "require-dev": {
-    "croox/wp-dev-env-frame": "0.12.0",
+    "croox/wp-dev-env-frame": "0.14.0",
     "composer/installers": "*"
   },
   "repositories": [

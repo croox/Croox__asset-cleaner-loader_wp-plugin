@@ -1,7 +1,7 @@
 # Croox Asset Cleaner Loader #
 **Tags:** load,script,async,clean,assets  
 **Donate link:** https://github.com/croox/donate  
-**Contributors:** [croox](https://profiles.wordpress.org/croox)  
+**Contributors:** [croox](https://profiles.wordpress.org/croox/)  
 **Tested up to:** 5.6.1  
 **Requires at least:** 5.0.0  
 **Requires PHP:** 5.6.0  
@@ -115,6 +115,12 @@ Upload and install this Theme the same way you'd install any other Theme.
 # 
 
 ## Changelog ##
+
+## 0.4.1 - 2022-03-08
+Updated to generator-wp-dev-env#1.3.0 ( wp-dev-env-grunt#1.3.1 wp-dev-env-frame#0.14.0 )
+
+### Changed
+- Updated to generator-wp-dev-env#1.3.0 ( wp-dev-env-grunt#1.3.1 wp-dev-env-frame#0.14.0 )
 
 ## 0.4.0 - 2021-11-24
 Allow filtering the $excluded_handles for the loader
