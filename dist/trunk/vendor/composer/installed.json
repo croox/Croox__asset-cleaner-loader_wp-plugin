@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v2.0.1",
-            "version_normalized": "2.0.1.0",
+            "version": "v2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8"
+                "reference": "75e5ef05436c90ac565a48176cc7465991908352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
-                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
+                "url": "https://api.github.com/repos/composer/installers/zipball/75e5ef05436c90ac565a48176cc7465991908352",
+                "reference": "75e5ef05436c90ac565a48176cc7465991908352",
                 "shasum": ""
             },
             "require": {
@@ -27,13 +27,14 @@
                 "symfony/phpunit-bridge": "^5.3",
                 "symfony/process": "^5"
             },
-            "time": "2021-09-13T08:21:20+00:00",
+            "time": "2022-03-18T12:27:54+00:00",
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-main": "2.x-dev"
-                }
+                },
+                "plugin-modifies-install-path": true
             },
             "installation-source": "dist",
             "autoload": {
@@ -128,7 +129,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.0.1"
+                "source": "https://github.com/composer/installers/tree/v2.1.0"
             },
             "funding": [
                 {
@@ -148,20 +149,20 @@
         },
         {
             "name": "croox/wp-dev-env-frame",
-            "version": "0.14.0",
-            "version_normalized": "0.14.0.0",
+            "version": "0.14.1",
+            "version_normalized": "0.14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/croox/wp-dev-env-frame.git",
-                "reference": "b9404fa217ce09d341ee5503651cdebee894dfe0"
+                "reference": "fd6a35e28a2e33ad92ad7556a7f8910a855e8ed4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/croox/wp-dev-env-frame/zipball/b9404fa217ce09d341ee5503651cdebee894dfe0",
-                "reference": "b9404fa217ce09d341ee5503651cdebee894dfe0",
+                "url": "https://api.github.com/repos/croox/wp-dev-env-frame/zipball/fd6a35e28a2e33ad92ad7556a7f8910a855e8ed4",
+                "reference": "fd6a35e28a2e33ad92ad7556a7f8910a855e8ed4",
                 "shasum": ""
             },
-            "time": "2022-03-08T13:05:17+00:00",
+            "time": "2022-03-17T16:45:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -181,7 +182,7 @@
             "description": "some frame for wp-dev-env",
             "homepage": "https://github.com/croox/wp-dev-env-frame",
             "support": {
-                "source": "https://github.com/croox/wp-dev-env-frame/tree/0.14.0",
+                "source": "https://github.com/croox/wp-dev-env-frame/tree/0.14.1",
                 "issues": "https://github.com/croox/wp-dev-env-frame/issues"
             },
             "install-path": "../croox/wp-dev-env-frame"
