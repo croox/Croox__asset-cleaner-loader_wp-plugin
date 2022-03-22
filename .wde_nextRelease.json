@@ -1,3 +1,8 @@
 {
-  "changes": []
+  "changes": [
+    {
+      "type": "fixed",
+      "message": "Fix readme, its filters not actions"
+    }
+  ]
 }
