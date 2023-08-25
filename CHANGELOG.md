@@ -1,9 +1,14 @@
 # Croox Asset Cleaner Loader
-
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## 0.4.3 - 2023-08-25
+Updated dependencies
+
+### Changed
+- Updated to generator-wp-dev-env#1.6.7 ( wp-dev-env-grunt#1.6.1 wp-dev-env-frame#0.16.0 )
 
 ## 0.4.2 - 2022-03-22
 Fix Readme and update dependencies

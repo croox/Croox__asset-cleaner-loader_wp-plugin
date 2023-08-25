@@ -84,6 +84,7 @@ class ComposerStaticInit5e9157f575f03360778416439e3522e9
         'Composer\\Installers\\MajimaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MajimaInstaller.php',
         'Composer\\Installers\\MakoInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MakoInstaller.php',
         'Composer\\Installers\\MantisBTInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MantisBTInstaller.php',
+        'Composer\\Installers\\MatomoInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MatomoInstaller.php',
         'Composer\\Installers\\MauticInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MauticInstaller.php',
         'Composer\\Installers\\MayaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MayaInstaller.php',
         'Composer\\Installers\\MediaWikiInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MediaWikiInstaller.php',
@@ -149,8 +150,10 @@ class ComposerStaticInit5e9157f575f03360778416439e3522e9
         'croox\\wde\\utils\\Arr' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Arr.php',
         'croox\\wde\\utils\\Attachment' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Attachment.php',
         'croox\\wde\\utils\\Color' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Color.php',
+        'croox\\wde\\utils\\Critical_Css_Loader' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Critical_Css_Loader.php',
         'croox\\wde\\utils\\Post' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Post.php',
         'croox\\wde\\utils\\Post_Type' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Post_Type.php',
+        'croox\\wde\\utils\\Request' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Request.php',
         'croox\\wde\\utils\\Wpml' => __DIR__ . '/..' . '/croox/wp-dev-env-frame/src/utils/Wpml.php',
     );
 

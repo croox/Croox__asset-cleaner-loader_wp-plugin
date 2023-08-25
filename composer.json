@@ -3,7 +3,7 @@
   "prefer-stable": true,
   "require": {},
   "require-dev": {
-    "croox/wp-dev-env-frame": "0.14.1",
+    "croox/wp-dev-env-frame": "0.16.0",
     "composer/installers": "*"
   },
   "repositories": [
@@ -15,6 +15,11 @@
   "autoload": {
     "psr-4": {
       "acll\\": "src/classes/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }
