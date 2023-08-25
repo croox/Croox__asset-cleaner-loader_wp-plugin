@@ -16,5 +16,10 @@
     "psr-4": {
       "acll\\": "src/classes/"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }
